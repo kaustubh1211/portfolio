@@ -18,7 +18,7 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       // Change 200 to any value you want
-      if (window.scrollY > 800) {
+      if (window.scrollY > 200) {
         setShowLogo(true);
       } else {
         setShowLogo(false);

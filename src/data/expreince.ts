@@ -1,14 +1,14 @@
 export const experiences = [
   {
     id: 1,
-    company: "Your Company",
+    company: "Techluminix",
     logo: "/images/company-logo.png",
-    position: "Founding Frontend Engineer",
-    duration: "August 2025 - Present",
-    location: "United States (Remote)",
+    position: "Software Developer",
+    duration: " jan 2025 - Present",
+    location: "Mumbai (on-site)",
     status: "Working",
     technologies: ["TypeScript", "React", "Next.js"],
     description: "Building amazing web applications...",
   },
-  // Add more experiences
+  // Add more experiences   
 ];

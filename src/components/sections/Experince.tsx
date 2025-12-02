@@ -20,15 +20,14 @@ interface ExperienceItem {
 const experiences: ExperienceItem[] = [
   {
     id: 1,
-    company: "Tech Company",
-    logo: "/images/company-logo.png",
-    position: "Founding Frontend Engineer",
-    duration: "August 2025 - Present",
-    location: "United States (Remote)",
+    company: "Techluminix",
+    logo: "/company/techluminix.svg",
+    position: "Software Developer",
+    duration: " jan 2025 - Present",
+    location: "Mumbai (on-site)",
     status: "Working",
     technologies: ["TypeScript", "React", "Next.js"],
-    description: "Building scalable web applications with modern technologies.",
-    website: "https://company.com"
+    description: "Building amazing web applications...",
   },
   // Add more experiences here
 ];

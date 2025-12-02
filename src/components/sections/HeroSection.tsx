@@ -43,6 +43,14 @@ const Hero: React.FC = () => {
     { name: 'Email', icon: Mail, href: 'mailto:your.email@example.com' },
   ];
 
+  const highlights = [
+    'Building scalable web applications with modern JavaScript frameworks',
+    'Experienced in full-stack development from frontend to backend',
+    'Strong focus on clean code, performance optimization & best practices',
+    'Specialized in creating responsive UIs and RESTful APIs',
+    'Proficient in database design, authentication systems & SEO optimization'
+  ];
+
   return (
     <section className="min-h-screen bg-black text-white flex items-center pt-20">
       <Container className="py-20">
@@ -65,37 +73,66 @@ const Hero: React.FC = () => {
                   priority
                 />
               </div>
-              <div className="absolute bottom-1 right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-black animate-pulse"></div>
+              <div className="absolute bottom-1 right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-black"></div>
             </div>
 
             {/* Name & Title */}
             <div className="flex-1 text-center sm:text-left">
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-2">
+              <h1 className="font-heading text-3xl sm:text-3xl md:text-5xl font-bold tracking-tight mb-2">
                 Hi, I'm Kaustubh
               </h1>
-              <h2 className="text-xl sm:text-2xl text-gray-400 font-light">
+              <h2 className="text-md sm:text-md text-gray-400 font-light">
                 Full Stack Web Developer
               </h2>
             </div>
           </motion.div>
 
-          {/* Description */}
-          <motion.p 
+          {/* About Section */}
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-base sm:text-lg text-gray-400 leading-relaxed"
+            className="space-y-4"
           >
-            I build interactive web applications with a focus on clean UI design. 
-            Specialized in modern web technologies and passionate about creating 
-            seamless user experiences.
-          </motion.p>
+            <h3 className="text-sm text-gray-500 uppercase tracking-wider">
+              About
+            </h3>
+            <p className="text-base sm:text-lg text-gray-300 leading-relaxed mb-4">
+              Full-Stack Developer specializing in modern web technologies and production-ready solutions.
+            </p>
+            <ul className="space-y-3">
+              {highlights.map((highlight, index) => (
+                <motion.li
+                  key={index}
+                  initial={{ 
+                    opacity: 0, 
+                    x: -20,
+                    filter: 'blur(10px)'
+                  }}
+                  animate={{ 
+                    opacity: 1, 
+                    x: 0,
+                    filter: 'blur(0px)'
+                  }}
+                  transition={{ 
+                    duration: 0.6,
+                    delay: 0.3 + index * 0.15,
+                    ease: [0.25, 0.4, 0.25, 1]
+                  }}
+                  className="flex items-start gap-3 text-gray-400"
+                >
+                  <span className="text-gray-400 mt-1 flex-shrink-0">•</span>
+                  <span className="text-sm sm:text-base leading-relaxed">{highlight}</span>
+                </motion.li>
+              ))}
+            </ul>
+          </motion.div>
 
           {/* Tech Stack */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
+            transition={{ duration: 0.5, delay: 1.2 }}
           >
             <h3 className="text-sm text-gray-500 uppercase tracking-wider mb-4">
               Tech Stack
@@ -107,9 +144,21 @@ const Hero: React.FC = () => {
                   href={tech.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.3, delay: 0.5 + index * 0.1 }}
+                  initial={{ 
+                    opacity: 0, 
+                    scale: 0.8,
+                    filter: 'blur(8px)'
+                  }}
+                  animate={{ 
+                    opacity: 1, 
+                    scale: 1,
+                    filter: 'blur(0px)'
+                  }}
+                  transition={{ 
+                    duration: 0.5, 
+                    delay: 1.3 + index * 0.1,
+                    ease: [0.25, 0.4, 0.25, 1]
+                  }}
                   className="flex items-center gap-2 px-4 py-2.5 bg-gray-900 border border-gray-800 rounded-lg hover:border-gray-600 hover:bg-gray-800 transition-all group"
                 >
                   <Image 
@@ -129,7 +178,7 @@ const Hero: React.FC = () => {
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.8 }}
+            transition={{ duration: 0.5, delay: 1.8 }}
             className="flex flex-wrap gap-4"
           >
             <Link
@@ -151,7 +200,7 @@ const Hero: React.FC = () => {
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 1 }}
+            transition={{ duration: 0.5, delay: 2.0 }}
             className="flex gap-3 pt-4"
           >
             {socialLinks.map((social, index) => {
@@ -159,9 +208,21 @@ const Hero: React.FC = () => {
               return (
                 <motion.div
                   key={social.name}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.3, delay: 1.1 + index * 0.1 }}
+                  initial={{ 
+                    opacity: 0, 
+                    scale: 0.8,
+                    filter: 'blur(6px)'
+                  }}
+                  animate={{ 
+                    opacity: 1, 
+                    scale: 1,
+                    filter: 'blur(0px)'
+                  }}
+                  transition={{ 
+                    duration: 0.4, 
+                    delay: 2.1 + index * 0.1,
+                    ease: [0.25, 0.4, 0.25, 1]
+                  }}
                 >
                   <Link
                     href={social.href}
