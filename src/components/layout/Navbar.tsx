@@ -37,7 +37,7 @@ const Navbar = () => {
             {/* Logo - Slides up from bottom */}
             <Link href="/" className="flex items-center group h-10 overflow-hidden">
               <div 
-                className={`w-10 h-10 rounded-full overflow-hidden border-2 border-yellow-400 transition-all duration-500 ${
+                className={`w-10 h-10 rounded-full overflow-hidden  transition-all duration-500 ${
                   showLogo 
                     ? 'translate-y-0 opacity-100' 
                     : 'translate-y-full opacity-0'
@@ -65,7 +65,7 @@ const Navbar = () => {
                 >
                   <span className="relative z-10">{tab.label}</span>
                   <span 
-                    className={`absolute bottom-0 left-0 h-0.5 bg-yellow-400 transition-all duration-300 ${
+                    className={`absolute bottom-0 left-0 h-0.5  transition-all duration-300 ${
                       activeTab === tab.id ? 'w-full' : 'w-0 group-hover:w-full'
                     }`}
                   />

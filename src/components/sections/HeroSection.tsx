@@ -78,8 +78,8 @@ const Hero: React.FC = () => {
 
             {/* Name & Title */}
             <div className="flex-1 text-center sm:text-left">
-              <h1 className="font-heading text-3xl sm:text-3xl md:text-5xl font-bold tracking-tight mb-2">
-                Hi, I'm Kaustubh
+              <h1 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight mb-2">
+                  Kaustubh Patil
               </h1>
               <h2 className="text-md sm:text-md text-gray-400 font-light">
                 Full Stack Web Developer

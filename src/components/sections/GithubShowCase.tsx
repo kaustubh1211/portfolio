@@ -79,7 +79,7 @@ const GitHubActivity = () => {
   };
 
   return (
-    <section className="bg-black text-white py-20">
+    <section className="bg-black text-white ">
       <Container>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -110,7 +110,7 @@ const GitHubActivity = () => {
           </div>
 
           {/* GitHub Contribution Graph */}
-          <div className="bg-[#0d1117] border border-[#30363d] rounded-xl p-6 overflow-x-auto relative">
+          <div className="border border-[#090a0a] rounded-xl    md:overflow-hidden overflow-x-auto relative">
             {loading ? (
               <div className="flex items-center justify-center h-32">
                 <div className="w-8 h-8 border-4 border-gray-600 border-t-white rounded-full animate-spin"></div>
@@ -140,7 +140,7 @@ const GitHubActivity = () => {
                   </div>
 
                   {/* Weeks */}
-                  <div className="flex gap-1">
+                  <div className="flex gap-1 contain">
                     {data.contributions.map((week, weekIndex) => (
                       <div key={weekIndex} className="flex flex-col gap-1">
                         {week.map((day, dayIndex) => (
@@ -150,8 +150,8 @@ const GitHubActivity = () => {
                             onMouseLeave={handleMouseLeave}
                             className="cursor-pointer transition-all hover:ring-2 hover:ring-white/50 rounded-sm"
                             style={{
-                              width: '10px',
-                              height: '10px',
+                              width: '8px',
+                              height: '9px',
                               backgroundColor: day.color,
                               borderRadius: '2px',
                             }}
