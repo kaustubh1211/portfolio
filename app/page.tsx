@@ -4,6 +4,8 @@ import Experience from '@/src/components/sections/Experince';
 import type { Metadata } from 'next';
 import Navbar from '@/src/components/layout/Navbar';
 import GitHubActivity from '@/src/components/sections/GithubShowCase';
+import { ProjectorIcon } from 'lucide-react';
+import Projects from '@/src/components/sections/Project';
 
 export const metadata: Metadata = {
   title: 'Kaustubh- Full Stack Web Developer',
@@ -22,6 +24,7 @@ export default function Home() {
     <main className="bg-black min-h-screen">
       <Navbar/>
       <Hero />
+      <Projects/>
       <GitHubActivity/>
       <Experience />
       {/* Add more sections here */}

@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Github, Linkedin, Mail, Twitter } from 'lucide-react';
@@ -8,6 +8,17 @@ import { motion } from 'framer-motion';
 import Container from '../ui/Container';
 
 const Hero: React.FC = () => {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isHovering, setIsHovering] = useState(false);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    setMousePosition({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    });
+  };
+
   const techStack = [
     { 
       name: 'TypeScript', 
@@ -55,36 +66,117 @@ const Hero: React.FC = () => {
     <section className="min-h-screen bg-black text-white flex items-center pt-20">
       <Container className="py-20">
         <div className="space-y-12">
-          {/* Top: Avatar + Name */}
+          {/* Top: Profile Card with Grid Background */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="flex flex-col sm:flex-row items-center sm:items-start gap-6"
+            className="relative rounded-xl border overflow-hidden bg-gradient-to-br from-gray-900/50 to-black/50 group transition-colors duration-500"
+            style={{
+              borderColor: isHovering ? 'rgba(75, 85, 99, 0.8)' : 'rgba(31, 41, 55, 0.5)',
+            }}
+            onMouseMove={handleMouseMove}
+            onMouseEnter={() => setIsHovering(true)}
+            onMouseLeave={() => setIsHovering(false)}
           >
-            {/* Avatar */}
-            <div className="relative flex-shrink-0">
-              <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden border-4 border-gray-800 relative">
-                <Image
-                  src="/images/profile/profilegit.jpeg"
-                  alt="Kaustubh - Full Stack Developer"
-                  fill
-                  className="object-cover"
-                  priority
+            {/* Static Grid Pattern - Low Contrast */}
+            <div 
+              className="absolute inset-0 opacity-[0.08]"
+              style={{
+                backgroundImage: `
+                  linear-gradient(to right, #ffffff 1px, transparent 1px),
+                  linear-gradient(to bottom, #ffffff 1px, transparent 1px)
+                `,
+                backgroundSize: '24px 24px',
+              }}
+            />
+
+            {/* Torch/Spotlight Effect - Highlights Grid on Hover */}
+            {isHovering && (
+              <motion.div
+                className="absolute inset-0 pointer-events-none z-0"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                style={{
+                  background: `radial-gradient(circle 300px at ${mousePosition.x}px ${mousePosition.y}px, 
+                    rgba(255, 255, 255, 0.12) 0%, 
+                    transparent 70%)`,
+                }}
+              >
+                {/* High contrast grid visible only in torch area */}
+                <div 
+                  className="absolute inset-0"
+                  style={{
+                    backgroundImage: `
+                      linear-gradient(to right, rgba(255, 255, 255, 0.35) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(255, 255, 255, 0.35) 1px, transparent 1px)
+                    `,
+                    backgroundSize: '24px 24px',
+                    maskImage: `radial-gradient(circle 300px at ${mousePosition.x}px ${mousePosition.y}px, 
+                      black 0%, 
+                      transparent 70%)`,
+                    WebkitMaskImage: `radial-gradient(circle 300px at ${mousePosition.x}px ${mousePosition.y}px, 
+                      black 0%, 
+                      transparent 70%)`,
+                  }}
                 />
+              </motion.div>
+            )}
+
+            {/* Subtle color accent */}
+            {isHovering && (
+              <motion.div
+                className="absolute inset-0 opacity-30 z-0"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 0.3 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5 }}
+                style={{
+                  background: `radial-gradient(circle 250px at ${mousePosition.x}px ${mousePosition.y}px, 
+                    rgba(96, 165, 250, 0.06), 
+                    transparent 60%)`,
+                }}
+              />
+            )}
+
+            {/* Content */}
+            <div className="relative z-20 p-6 sm:p-8">
+              <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6">
+                {/* Avatar */}
+                <div className="relative flex-shrink-0">
+                  <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden border border-gray-700/50 relative bg-gray-900 shadow-xl">
+                    <Image
+                      src="/images/profile/profilegit.jpeg"
+                      alt="Kaustubh - Full Stack Developer"
+                      fill
+                      className="object-cover"
+                      priority
+                    />
+                  </div>
+                  <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-green-500 rounded-full border-[3px] border-gray-900 shadow-lg">
+                    <div className="absolute inset-0 bg-green-500 rounded-full animate-ping opacity-75"></div>
+                  </div>
+                </div>
+
+                {/* Name & Title */}
+                <div className="flex-1 text-center sm:text-left">
+                  <h1 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight mb-2 text-white" style={{ textShadow: '0 2px 10px rgba(0, 0, 0, 0.8)' }}>
+                    Kaustubh Patil
+                  </h1>
+                  <p className="text-sm sm:text-base text-gray-400 font-medium mb-3" style={{ textShadow: '0 2px 8px rgba(0, 0, 0, 0.8)' }}>
+                    Full Stack Web Developer
+                  </p>
+                  <p className="text-sm text-gray-500" style={{ textShadow: '0 2px 8px rgba(0, 0, 0, 0.8)' }}>
+                    Building scalable web solutions with modern technologies
+                  </p>
+                </div>
               </div>
-              <div className="absolute bottom-1 right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-black"></div>
             </div>
 
-            {/* Name & Title */}
-            <div className="flex-1 text-center sm:text-left">
-              <h1 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight mb-2">
-                  Kaustubh Patil
-              </h1>
-              <h2 className="text-md sm:text-md text-gray-400 font-light">
-                Full Stack Web Developer
-              </h2>
-            </div>
+            {/* Bottom accent line */}
+            <div className="h-[2px] bg-gradient-to-r from-transparent via-gray-700 to-transparent"></div>
           </motion.div>
 
           {/* About Section */}
