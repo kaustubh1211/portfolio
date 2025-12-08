@@ -27,7 +27,7 @@ export default function Home() {
       <Projects/>
       <GitHubActivity/>
       <Experience />
-      {/* Add more sections here */}
+   
       {/* <Projects /> */}
       {/* <Skills /> */}
       {/* <Contact /> */}

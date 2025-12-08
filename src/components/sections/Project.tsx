@@ -16,6 +16,24 @@ interface Project {
 }
 
 const projects: Project[] = [
+  
+  
+  {
+    id: 0,
+    name: "Techluminix Portfolio Website",
+    tagline: "Company Portfolio Built with Next.js and Tailwind CSS",
+    status: "Live",
+    techStack: ["Next.js", " javascript", "Tailwind CSS",  "Framer Motion" , "SEO Optimization"],
+    highlights: [
+      "Developed a fully responsive and visually engaging portfolio website for Techluminix using Next.js and Tailwind CSS.",
+      "Implemented Framer Motion to create smooth, modern animations and interactive UI effects.",
+      "Improved Core Web Vitals and overall performance through optimized images, dynamic imports, code-splitting, and SEO best practices.",
+      "Enhanced SEO ranking by implementing meta tags, structured content, optimized components, and improved lighthouse scores.",
+      "Focused on speed, clean animations, and brand-focused design for better user experience."
+    ],
+    liveUrl: "https://techluminix.com/",
+
+  },
   {
     id: 1,
     name: "Jeevandhara Admin Panel",
@@ -29,18 +47,7 @@ const projects: Project[] = [
     liveUrl: "https://admin.jeevandharadigital.in/",
     // githubUrl: "#",
   },
-  {
-    id: 2,
-    name: "Smart School Management System",
-    tagline: "Complete School Administration Platform",
-    status: "On-Going",
-    techStack: ["React", "Node.js", "PostgreSQL", "Prisma"],
-    highlights: [
-      "Developed backend + frontend for student management, fees, reports, staff, attendance, dashboard analytics.",
-      "Full-stack development with attention to security, performance & UI clarity.",
-    ],
-    githubUrl: "#",
-  },
+
   {
     id: 3,
     name: "Speaklingo",
@@ -56,7 +63,7 @@ const projects: Project[] = [
 ];
 
 const Projects: React.FC = () => {
-  const [expandedId, setExpandedId] = useState<number | null>(1); // Open first project by default
+  const [expandedId, setExpandedId] = useState<number | null>(0); // Open first project by default
 
   const toggleExpand = (id: number) => {
     setExpandedId(expandedId === id ? null : id);

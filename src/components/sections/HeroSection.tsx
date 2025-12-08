@@ -48,10 +48,10 @@ const Hero: React.FC = () => {
   ];
 
   const socialLinks = [
-    { name: 'Twitter', icon: Twitter, href: 'https://twitter.com/yourusername' },
-    { name: 'LinkedIn', icon: Linkedin, href: 'https://linkedin.com/in/yourusername' },
-    { name: 'GitHub', icon: Github, href: 'https://github.com/yourusername' },
-    { name: 'Email', icon: Mail, href: 'mailto:your.email@example.com' },
+    { name: 'LinkedIn', icon: Linkedin, href: 'https://www.linkedin.com/in/kaustubh-patil-8645b923a/ '},
+    { name: 'GitHub', icon: Github, href: 'https://github.com/kaustubh1211' },
+    { name: 'Twitter', icon: Twitter, href: 'https://x.com/Kaustub1111' },
+    { name: 'Email', icon: Mail, href: 'mailto:your.kasutuubh1211@gmail.com' },
   ];
 
   const highlights = [
@@ -63,7 +63,7 @@ const Hero: React.FC = () => {
   ];
 
   return (
-    <section className="min-h-screen bg-black text-white flex items-center pt-20">
+    <section className="min-h-screen bg-black text-white flex items-center  pt-5">
       <Container className="py-20">
         <div className="space-y-12">
           {/* Top: Profile Card with Grid Background */}

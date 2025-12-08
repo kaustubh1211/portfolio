@@ -80,39 +80,7 @@ const experiences: ExperienceItem[] = [
   },
 ];
 
-// Tech icon component
-const TechIcon: React.FC<{ name: string }> = ({ name }) => {
-  const getIconData = (tech: string): { initial: string; color: string } => {
-    const map: { [key: string]: { initial: string; color: string } } = {
-      'Next.js': { initial: 'N', color: 'from-gray-700 to-gray-800' },
-      'Node.js': { initial: 'No', color: 'from-green-900 to-green-950' },
-      'PostgreSQL': { initial: 'P', color: 'from-blue-900 to-blue-950' },
-      'Prisma': { initial: 'Pr', color: 'from-indigo-900 to-indigo-950' },
-      'Tailwind CSS': { initial: 'T', color: 'from-cyan-900 to-cyan-950' },
-      'REST API': { initial: 'R', color: 'from-orange-900 to-orange-950' },
-      'NestJS': { initial: 'Ns', color: 'from-red-900 to-red-950' },
-      'TypeScript': { initial: 'TS', color: 'from-blue-900 to-blue-950' },
-      'Express': { initial: 'E', color: 'from-gray-700 to-gray-900' },
-      'Postman': { initial: 'Po', color: 'from-orange-900 to-orange-950' },
-      'React': { initial: 'R', color: 'from-cyan-900 to-cyan-950' },
-      'Full Stack': { initial: 'FS', color: 'from-purple-900 to-purple-950' },
-      'HTML': { initial: 'H', color: 'from-orange-900 to-orange-950' },
-      'CSS': { initial: 'C', color: 'from-blue-900 to-blue-950' },
-      'JavaScript': { initial: 'JS', color: 'from-yellow-900 to-yellow-950' },
-      'AWS': { initial: 'A', color: 'from-orange-900 to-orange-950' },
-      'Git': { initial: 'G', color: 'from-red-900 to-red-950' },
-    };
-    return map[tech] || { initial: tech.charAt(0), color: 'from-gray-700 to-gray-800' };
-  };
-
-  const { initial, color } = getIconData(name);
-
-  return (
-    <div className={`w-6 h-6 rounded bg-gradient-to-br ${color} border border-gray-700/50 flex items-center justify-center text-[10px] font-bold text-gray-300 shadow-sm`}>
-      {initial}
-    </div>
-  );
-};
+// Tech icon componen
 
 const Experience: React.FC = () => {
   const [expandedId, setExpandedId] = useState<number | null>(1); // Open first experience by default
@@ -274,7 +242,7 @@ const Experience: React.FC = () => {
                             <div className="flex flex-wrap items-center gap-2">
                               {exp.technologies.map((tech, idx) => (
                                 <div key={idx} className="flex items-center gap-1.5 px-2.5 py-1.5 bg-gray-900/50 rounded-lg text-xs text-gray-300 border border-gray-800 hover:border-gray-700 transition-colors">
-                                  <TechIcon name={tech} />
+                                
                                   <span>{tech}</span>
                                 </div>
                               ))}
