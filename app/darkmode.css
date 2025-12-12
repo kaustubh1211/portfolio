@@ -1,0 +1,11 @@
+/* Light mode (default) */
+:root {
+  --bg-primary: 255 255 255;
+  --text-primary: 0 0 0;
+}
+
+/* Dark mode */
+.dark {
+  --bg-primary: 0 0 0;
+  --text-primary: 255 255 255;
+}

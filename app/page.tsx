@@ -21,16 +21,12 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <main className="bg-black min-h-screen">
+    <main className="min-h-screen bg-white dark:bg-black text-gray-900 dark:text-white">
       <Navbar/>
       <Hero />
       <Projects/>
       <GitHubActivity/>
       <Experience />
-   
-      {/* <Projects /> */}
-      {/* <Skills /> */}
-      {/* <Contact /> */}
     </main>
   );
-} 
+}

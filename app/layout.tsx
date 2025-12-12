@@ -1,8 +1,9 @@
 import { IBM_Plex_Mono } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/src/components/layout/Navbar';
+import { ViewTransitions } from 'next-view-transitions';
+import { ThemeProvider } from '@/src/components/providers/themeProvider';
 
-// IBM Plex Mono - Monospace font for the entire site
 const ibmPlexMono = IBM_Plex_Mono({ 
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
@@ -21,11 +22,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={ibmPlexMono.variable}>
-      <body className={ibmPlexMono.className}>
-        <Navbar />
-        {children}
-      </body>
-    </html>
+    <ViewTransitions>
+      <html lang="en" suppressHydrationWarning>
+        <body className={`${ibmPlexMono.variable} ${ibmPlexMono.className}`}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem={false}
+            disableTransitionOnChange
+          >
+            <Navbar />
+            {children}
+          </ThemeProvider>
+        </body>
+      </html>
+    </ViewTransitions>
   );
 }
