@@ -3,11 +3,12 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import Container from '../ui/Container';
 import ThemeToggle from '../ui/TheemeToggle';
 
 const Navbar = () => {
-  const [activeTab, setActiveTab] = useState('work');
+  const pathname = usePathname();
   const [showLogo, setShowLogo] = useState(false);
 
   const tabs = [
@@ -28,6 +29,13 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const isActive = (href: string) => {
+    if (href === '/') {
+      return pathname === '/';
+    }
+    return pathname.startsWith(href);
+  };
 
   return (
     <nav className="fixed top-0 w-full bg-white/80 dark:bg-black/80 backdrop-blur-md z-50 border-b border-gray-200 dark:border-gray-800 transition-colors">
@@ -60,13 +68,16 @@ const Navbar = () => {
                 <Link
                   key={tab.id}
                   href={tab.href}
-                  onClick={() => setActiveTab(tab.id)}
-                  className="relative text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors py-2 group"
+                  className={`relative transition-colors py-2 group ${
+                    isActive(tab.href)
+                      ? 'text-gray-900 dark:text-white'
+                      : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'
+                  }`}
                 >
                   <span className="relative z-10">{tab.label}</span>
                   <span 
                     className={`absolute bottom-0 left-0 h-0.5 bg-gray-900 dark:bg-white transition-all duration-300 ${
-                      activeTab === tab.id ? 'w-full' : 'w-0 group-hover:w-full'
+                      isActive(tab.href) ? 'w-full' : 'w-0 group-hover:w-full'
                     }`}
                   />
                 </Link>

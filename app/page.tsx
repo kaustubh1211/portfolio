@@ -6,6 +6,7 @@ import Navbar from '@/src/components/layout/Navbar';
 import GitHubActivity from '@/src/components/sections/GithubShowCase';
 import { ProjectorIcon } from 'lucide-react';
 import Projects from '@/src/components/sections/Project';
+import ContactForm from '@/src/components/sections/ContactForm';
 
 export const metadata: Metadata = {
   title: 'Kaustubh- Full Stack Web Developer',
@@ -27,6 +28,7 @@ export default function Home() {
       <Projects/>
       <GitHubActivity/>
       <Experience />
+      <ContactForm/>
     </main>
   );
 }
