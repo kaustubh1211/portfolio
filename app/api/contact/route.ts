@@ -2,10 +2,11 @@ import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
 export async function POST(request: NextRequest) {
-  try {
+  
+  try { 
     // Check if API key exists
     if (!process.env.RESEND_API_KEY) {
-      console.error('RESEND_API_KEY is not set');
+
       return NextResponse.json(
         { error: 'Email service not configured' },
         { status: 500 }
@@ -57,10 +58,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ success: true, data }, { status: 200 });
   } catch (error: any) {
-    console.error('Contact form error:', error);
-    console.error('Error details:', error.message);
-    console.error('Error stack:', error.stack);
-    
+
     return NextResponse.json(
       { 
         error: 'Failed to send message',

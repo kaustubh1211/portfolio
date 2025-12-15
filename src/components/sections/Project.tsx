@@ -52,7 +52,7 @@ const projects: Project[] = [
     highlights: [
       "Real-time learning system with chat, recognition, and interactive language modules.",
     ],
-    githubUrl: "#",
+    githubUrl: "https://github.com/kaustubh1211/SpeakLingo",
   },
 ];
 
