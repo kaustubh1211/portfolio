@@ -17,14 +17,14 @@ const ComingSoon = () => {
           className="max-w-2xl mx-auto text-center space-y-8"
         >
           {/* Icon */}
-          <motion.div
+          {/* <motion.div
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             className="inline-flex items-center justify-center w-24 h-24 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 shadow-lg"
           >
             <BookOpen className="w-12 h-12 text-white" />
-          </motion.div>
+          </motion.div> */}
 
           {/* Heading */}
           <motion.div
@@ -106,28 +106,7 @@ const ComingSoon = () => {
           </motion.div>
 
           {/* Animated dots */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 1 }}
-            className="flex items-center justify-center gap-2 pt-8"
-          >
-            <motion.div
-              animate={{ scale: [1, 1.2, 1] }}
-              transition={{ duration: 1.5, repeat: Infinity, delay: 0 }}
-              className="w-2 h-2 rounded-full bg-blue-500"
-            />
-            <motion.div
-              animate={{ scale: [1, 1.2, 1] }}
-              transition={{ duration: 1.5, repeat: Infinity, delay: 0.2 }}
-              className="w-2 h-2 rounded-full bg-purple-500"
-            />
-            <motion.div
-              animate={{ scale: [1, 1.2, 1] }}
-              transition={{ duration: 1.5, repeat: Infinity, delay: 0.4 }}
-              className="w-2 h-2 rounded-full bg-green-500"
-            />
-          </motion.div>
+
         </motion.div>
       </Container>
     </section>
