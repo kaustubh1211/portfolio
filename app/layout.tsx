@@ -3,7 +3,7 @@ import './globals.css';
 import Navbar from '@/src/components/layout/Navbar';
 import { ViewTransitions } from 'next-view-transitions';
 import { ThemeProvider } from '@/src/components/providers/themeProvider';
-
+import Script from "next/script";
 const ibmPlexMono = IBM_Plex_Mono({ 
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
@@ -32,6 +32,19 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <Navbar />
+              {/* Google Analytics */}
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-WK1PGDSLG6');
+          `}
+        </Script>
             {children}
           </ThemeProvider>
         </body>

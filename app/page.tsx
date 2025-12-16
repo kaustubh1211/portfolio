@@ -9,16 +9,50 @@ import Projects from '@/src/components/sections/Project';
 import ContactForm from '@/src/components/sections/ContactForm';
 
 export const metadata: Metadata = {
-  title: 'Kaustubh- Full Stack Web Developer',
-  description: 'Portfolio of Ram, a full-stack web developer specializing in React, Next.js, TypeScript, and modern web technologies.',
-  keywords: ['web developer', 'react', 'nextjs', 'typescript', 'portfolio', 'full stack'],
-  authors: [{ name: 'kaustubh' }],
+  title: "Kaustubh — Full Stack Web Developer",
+  description:
+    "Kaustubh is a full-stack web developer specializing in React, Next.js, TypeScript, Node.js, and modern web technologies.",
+  keywords: [
+    "Kaustubh",
+    "web developer",
+    "full stack developer",
+    "react developer",
+    "nextjs developer",
+    "javascript",
+    "typescript",
+    "portfolio",
+  ],
+  authors: [{ name: "Kaustubh" }],
+  metadataBase: new URL("https://kaustubhp.in"),
   openGraph: {
-    title: 'Kaustubh - Full Stack Web Developer',
-    description: 'Full-stack web developer specializing in React and Next.js',
-    type: 'website',
+    title: "Kaustubh — Full Stack Web Developer",
+    description:
+      "Portfolio of Kaustubh, a full-stack web developer skilled in React, Next.js, TypeScript, backend development, and UI engineering.",
+    url: "https://kaustubhp.in",
+    siteName: "Kaustubh Portfolio",
+    images: [
+      {
+        url: "/image.png", // Put your social preview image in /public
+        width: 1200,
+        height: 630,
+        alt: "Kaustubh Portfolio Preview",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Kaustubh — Full Stack Web Developer",
+    description:
+      "Full-stack web developer specializing in React, Next.js, TypeScript and modern web development.",
+    images: ["/image.png"],
+  },
+  alternates: {
+    canonical: "https://kaustubhp.in",
   },
 };
+
 
 export default function Home() {
   return (
