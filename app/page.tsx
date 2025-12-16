@@ -23,16 +23,17 @@ export const metadata: Metadata = {
     "portfolio",
   ],
   authors: [{ name: "Kaustubh" }],
-  metadataBase: new URL("https://kaustubhp.in"),
+  metadataBase: new URL("https://www.kaustubhp.in"),
+
   openGraph: {
     title: "Kaustubh — Full Stack Web Developer",
     description:
       "Portfolio of Kaustubh, a full-stack web developer skilled in React, Next.js, TypeScript, backend development, and UI engineering.",
-    url: "https://kaustubhp.in",
+    url: "https://www.kaustubhp.in",
     siteName: "Kaustubh Portfolio",
     images: [
       {
-        url: "/image.png", // Put your social preview image in /public
+        url: "https://www.kaustubhp.in/image.png",
         width: 1200,
         height: 630,
         alt: "Kaustubh Portfolio Preview",
@@ -41,17 +42,20 @@ export const metadata: Metadata = {
     locale: "en_US",
     type: "website",
   },
+
   twitter: {
     card: "summary_large_image",
     title: "Kaustubh — Full Stack Web Developer",
     description:
       "Full-stack web developer specializing in React, Next.js, TypeScript and modern web development.",
-    images: ["/image.png"],
+    images: ["https://www.kaustubhp.in/image.png"],
   },
+
   alternates: {
-    canonical: "https://kaustubhp.in",
+    canonical: "https://www.kaustubhp.in",
   },
 };
+
 
 
 export default function Home() {
