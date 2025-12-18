@@ -7,6 +7,7 @@ import GitHubActivity from '@/src/components/sections/GithubShowCase';
 import { ProjectorIcon } from 'lucide-react';
 import Projects from '@/src/components/sections/Project';
 import ContactForm from '@/src/components/sections/ContactForm';
+import { TextHoverEffect } from '@/src/components/ui/Hovertext';
 
 export const metadata: Metadata = {
   title: "Kaustubh — Full Stack Web Developer",
@@ -66,6 +67,7 @@ export default function Home() {
       <Projects/>
       <GitHubActivity/>
       <Experience />
+      <TextHoverEffect text='Kaustubh'/>
       <ContactForm/>
     </main>
   );

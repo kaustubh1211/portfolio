@@ -52,7 +52,7 @@ const ContactForm = () => {
   };
 
   return (
-    <section id='contact' className="min-h-screen  bg-white dark:bg-black text-gray-900 dark:text-white flex items-center py-20 transition-colors">
+    <section id='contact' className="min-h-screen  bg-white dark:bg-black text-gray-900 dark:text-white flex items-center   transition-colors">
       <Container>
         <div className="max-w-2xl mx-auto">
           {/* Header */}
