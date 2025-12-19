@@ -4,6 +4,7 @@ import Navbar from '@/src/components/layout/Navbar';
 import { ViewTransitions } from 'next-view-transitions';
 import { ThemeProvider } from '@/src/components/providers/themeProvider';
 import Script from "next/script";
+import LogoSchema from './logo-schema';
 const ibmPlexMono = IBM_Plex_Mono({ 
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
@@ -14,6 +15,10 @@ const ibmPlexMono = IBM_Plex_Mono({
 export const metadata = {
   title: 'Kaustubh - Full Stack Developer',
   description: 'Portfolio of Kaustubh, a full-stack web developer specializing in modern web technologies',
+    icons: {
+    icon: "https://www.kaustubhp.in/image.png",
+    apple: "https://www.kaustubhp.in/image.png"
+  }
 };
 
 export default function RootLayout({
@@ -24,6 +29,26 @@ export default function RootLayout({
   return (
     <ViewTransitions>
       <html lang="en" suppressHydrationWarning>
+        <head>
+           <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              "name": "Kaustubh",
+              "url": "https://www.kaustubhp.in",
+              "jobTitle": "Full Stack Web Developer",
+              "knowsAbout": ["React", "Next.js", "TypeScript", "Node.js"],
+              "sameAs": [
+                "https://github.com/kaustubh1211",
+                "https://www.linkedin.com/in/kaustubh-patil-8645b923a/"
+              ]
+            })
+          }}
+        />
+          <LogoSchema/>
+        </head>
         <body className={`${ibmPlexMono.variable} ${ibmPlexMono.className}`}>
           <ThemeProvider
             attribute="class"
