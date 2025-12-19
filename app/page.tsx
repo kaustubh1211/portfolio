@@ -8,6 +8,7 @@ import { ProjectorIcon } from 'lucide-react';
 import Projects from '@/src/components/sections/Project';
 import ContactForm from '@/src/components/sections/ContactForm';
 import { TextHoverEffect } from '@/src/components/ui/Hovertext';
+import { Footer } from '@/src/components/sections/FooterInfo';
 
 export const metadata: Metadata = {
   title: "Kaustubh — Full Stack Web Developer",
@@ -69,6 +70,7 @@ export default function Home() {
       <Experience />
       <TextHoverEffect text='Kaustubh'/>
       <ContactForm/>
+      <Footer/>
     </main>
   );
 }
