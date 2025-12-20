@@ -14,7 +14,30 @@ interface Project {
   liveUrl?: string;
   githubUrl?: string;
 }
-
+ const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "itemListElement": [
+      {
+        "@type": "SoftwareApplication",
+        "position": 1,
+        "name": "Techluminix Portfolio Website",
+        "description": "Company Portfolio Built with Next.js and Tailwind CSS",
+        "applicationCategory": "WebApplication",
+        "operatingSystem": "Web Browser",
+        "url": "https://techluminix.com/"
+      },
+      {
+        "@type": "SoftwareApplication",
+        "position": 2,
+        "name": "Jeevandhara Admin Panel",
+        "description": "E-Commerce + MLM + Recharge System",
+        "applicationCategory": "WebApplication",
+        "operatingSystem": "Web Browser",
+        "url": "https://admin.jeevandharadigital.in/"
+      },
+    ]
+  }
 const projects: Project[] = [
   {
     id: 0,
@@ -90,7 +113,12 @@ const Projects: React.FC = () => {
   };
 
   return (
+    
     <section className="bg-white dark:bg-black text-gray-900 dark:text-white py-20 transition-colors">
+           <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
       <Container>
         <div className="space-y-10">
           {/* Section Header */}
