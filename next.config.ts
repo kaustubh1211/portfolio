@@ -1,7 +1,6 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  /* config options here */
+// next.config.js
+module.exports = {
+  experimental: {
+    turbo: true,  // Enable Turbopack if you want to use it
+  },
 };
-
-export default nextConfig;
