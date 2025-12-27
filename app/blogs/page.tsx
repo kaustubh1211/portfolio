@@ -6,7 +6,7 @@ import BlogSection from '@/src/components/sections/BlogSection';
 export const metadata: Metadata = {
   title: 'Blog - Web Development Insights & Tutorials | Kaustubh',
   description: 'Expert articles on Next.js, React, Flutter, TypeScript, and modern web development. Learn best practices, performance optimization, and advanced techniques.',
-  keywords: ['Next.js', 'React', 'Flutter', 'Web Development', 'TypeScript', 'JavaScript', 'Performance', 'Tutorial'],
+  keywords: ['Next.js', 'React', 'Web Development', 'TypeScript', 'JavaScript', 'Performance', 'Tutorial'],
   openGraph: {
     title: 'Blog - Web Development Insights & Tutorials | Kaustubh',
     description: 'Expert articles on Next.js, React, Flutter, and modern web development',

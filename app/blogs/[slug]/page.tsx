@@ -1,4 +1,3 @@
-// app/blogs/[slug]/page.tsx
 import { getPostBySlug, getAllPosts } from '@/lib/mdx';
 import { notFound } from 'next/navigation';
 import Container from '@/src/components/ui/Container';
@@ -60,7 +59,7 @@ export default async function BlogPost({
     
     return (
       <div className="bg-white dark:bg-black text-gray-900 dark:text-white py-20 transition-colors min-h-screen">
-        <Container className="">
+        <Container >
           {/* Back Button */}
           <Link
             href="/blogs"
