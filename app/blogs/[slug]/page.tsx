@@ -58,30 +58,30 @@ export default async function BlogPost({
     const post = await getPostBySlug(slug);
     
     return (
-      <div className="bg-white dark:bg-black text-gray-900 dark:text-white py-20 transition-colors min-h-screen">
-        <Container >
-          {/* Back Button */}
-          <Link
-            href="/blogs"
-            className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:underline mb-8 transition-colors"
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-            Back to Blog
-          </Link>
+      <div className="bg-white dark:bg-black transition-colors min-h-screen">
+        <article className="py-14 mt-9 md:py-16">
+          <Container className="max-w-3xl">
+            {/* Back Button */}
+            <Link
+              href="/blogs"
+              className="inline-flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white mb-10 transition-colors"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+              Back to all posts
+            </Link>
 
-          <article>
             {/* Header */}
-            <header className="mb-8">
+            <header className="mb-12">
               {/* Tags */}
               {post.frontmatter.tags && post.frontmatter.tags.length > 0 && (
-                <div className="flex flex-wrap gap-2 mb-4">
+                <div className="flex flex-wrap gap-2 mb-6">
                   {post.frontmatter.tags.map((tag: string) => (
                     <Link
                       key={tag}
                       href={`/blogs?tag=${tag}`}
-                      className="px-3 py-1 bg-gray-100 dark:bg-gray-900 text-gray-700 dark:text-gray-300 rounded-md text-sm font-medium hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors"
+                      className="px-3 py-1.5 bg-gray-100 dark:bg-gray-900 text-gray-700 dark:text-gray-300 rounded-md text-sm hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors"
                     >
                       {tag}
                     </Link>
@@ -90,12 +90,12 @@ export default async function BlogPost({
               )}
 
               {/* Title */}
-              <h1 className="text-4xl md:text-5xl font-bold mb-4 leading-tight">
+              <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white leading-[1.2]">
                 {post.frontmatter.title}
               </h1>
 
               {/* Meta */}
-              <div className="flex items-center gap-4 text-gray-600 dark:text-gray-400">
+              <div className="flex items-center gap-3 text-sm text-gray-500">
                 <time>
                   {new Date(post.frontmatter.date).toLocaleDateString('en-US', {
                     year: 'numeric',
@@ -110,7 +110,7 @@ export default async function BlogPost({
 
             {/* Featured Image */}
             {post.frontmatter.image && (
-              <div className="relative h-64 md:h-96 rounded-lg overflow-hidden mb-12 bg-gray-100 dark:bg-gray-900">
+              <div className="relative aspect-video rounded-xl overflow-hidden mb-12 bg-gray-100 dark:bg-gray-900">
                 <Image
                   src={post.frontmatter.image}
                   alt={post.frontmatter.title}
@@ -122,36 +122,27 @@ export default async function BlogPost({
             )}
 
             {/* Content */}
-            <div className="prose prose-gray dark:prose-invert prose-lg max-w-none
-              prose-headings:font-bold
-              prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6
-              prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-4
-              prose-p:leading-relaxed
-              prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-a:no-underline hover:prose-a:underline
-              prose-strong:font-semibold
-              prose-code:text-blue-600 dark:prose-code:text-blue-400 prose-code:bg-gray-100 dark:prose-code:bg-gray-900 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:before:content-none prose-code:after:content-none
-              prose-pre:bg-gray-100 dark:prose-pre:bg-gray-900 prose-pre:border prose-pre:border-gray-200 dark:prose-pre:border-gray-800
-              prose-img:rounded-lg
-              prose-li:marker:text-blue-600 dark:prose-li:marker:text-blue-400
-              prose-blockquote:border-l-blue-600 dark:prose-blockquote:border-l-blue-400
-            ">
+            <div className="blog-content">
               {post.content}
             </div>
-          </article>
 
-          {/* Footer */}
-          <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-800">
-            <Link
-              href="/blogs"
-              className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:underline transition-colors"
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
-              Back to all posts
-            </Link>
-          </div>
-        </Container>
+            {/* Separator */}
+            <div className="my-16 border-t border-gray-200 dark:border-gray-800"></div>
+
+            {/* Footer */}
+            <div className="flex items-center justify-between">
+              <Link
+                href="/blogs"
+                className="inline-flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+                Back to all posts
+              </Link>
+            </div>
+          </Container>
+        </article>
       </div>
     );
   } catch (error) {
