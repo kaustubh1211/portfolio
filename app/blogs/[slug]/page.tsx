@@ -1,9 +1,11 @@
+// app/blogs/[slug]/page.tsx
 import { getPostBySlug, getAllPosts } from '@/lib/mdx';
 import { notFound } from 'next/navigation';
 import Container from '@/src/components/ui/Container';
 import Image from 'next/image';
 import Link from 'next/link';
 import type { Metadata } from 'next';
+import BlogActions from '@/src/components/blog/BlogActions';
 
 export async function generateStaticParams() {
   const posts = await getAllPosts();
@@ -59,7 +61,7 @@ export default async function BlogPost({
     
     return (
       <div className="bg-white dark:bg-black transition-colors min-h-screen">
-        <article className="py-14 mt-9 md:py-16">
+        <article className="py-12 md:py-16">
           <Container className="max-w-3xl">
             {/* Back Button */}
             <Link
@@ -121,6 +123,12 @@ export default async function BlogPost({
               </div>
             )}
 
+            {/* Blog Actions - Like & Share */}
+            <BlogActions
+              slug={slug}
+              title={post.frontmatter.title}
+            />
+
             {/* Content */}
             <div className="blog-content">
               {post.content}
@@ -128,6 +136,16 @@ export default async function BlogPost({
 
             {/* Separator */}
             <div className="my-16 border-t border-gray-200 dark:border-gray-800"></div>
+
+            {/* Bottom Actions */}
+            <BlogActions 
+              slug={slug}
+              title={post.frontmatter.title}
+            />
+
+       
+
+            
 
             {/* Footer */}
             <div className="flex items-center justify-between">
