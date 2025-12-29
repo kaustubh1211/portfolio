@@ -1,4 +1,3 @@
-// src/components/blog/BlogActions.tsx
 'use client';
 
 import { useState, useEffect } from 'react';

@@ -74,8 +74,8 @@ const Hero: React.FC = () => {
             className="relative rounded-xl border overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900/50 dark:to-black/50 group transition-colors duration-500"
             style={{
               borderColor: isHovering 
-                ? 'rgba(156, 163, 175, 0.5)' // gray-400 in light, gray-600 in dark
-                : 'rgba(229, 231, 235, 0.8)', // gray-200 in light, gray-800 in dark
+              ? 'rgba(229, 231, 235, 0.8)' // gray-200 in light, gray-800 in dark
+              : 'rgba(156, 163, 175, 0.5)', // gray-400 in light, gray-600 in dark
             }}
             onMouseMove={handleMouseMove}
             onMouseEnter={() => setIsHovering(true)}
