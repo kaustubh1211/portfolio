@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import emailjs from '@emailjs/browser';
 import { Mail, Phone, User, MessageSquare, Send } from 'lucide-react';
 import Container from '../ui/Container';
 
@@ -12,7 +13,6 @@ const ContactForm = () => {
     message: '',
   });
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-  const [errorMessage, setErrorMessage] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -24,38 +24,33 @@ const ContactForm = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('loading');
-    setErrorMessage('');
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+      await emailjs.send(
+        'service_nlwg3ru',     
+        'template_e9mkzlw',     
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          phone: formData.phone,
+          message: formData.message,
         },
-        body: JSON.stringify(formData),
-      });
+        'stnv4SN6VhzyRnPW4'     
+      );
 
-      const data = await response.json();
-
-      if (response.ok) {
-        setStatus('success');
-        setFormData({ name: '', email: '', phone: '', message: '' });
-        setTimeout(() => setStatus('idle'), 5000);
-      } else {
-        setStatus('error');
-        setErrorMessage(data.error || 'Failed to send message');
-      }
+      setStatus('success');
+      setFormData({ name: '', email: '', phone: '', message: '' });
+      setTimeout(() => setStatus('idle'), 5000);
     } catch (error) {
       setStatus('error');
-      setErrorMessage('Something went wrong. Please try again.');
+      console.error('Error:', error);
     }
   };
 
   return (
-    <section id='contact' className="min-h-screen  bg-white dark:bg-black text-gray-900 dark:text-white flex items-center   transition-colors">
+    <section id='contact' className="min-h-screen bg-white dark:bg-black text-gray-900 dark:text-white flex items-center transition-colors">
       <Container>
         <div className="max-w-2xl mx-auto">
-          {/* Header */}
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">Get in Touch</h1>
             <p className="text-gray-600 dark:text-gray-400 text-lg">
@@ -63,9 +58,7 @@ const ContactForm = () => {
             </p>
           </div>
 
-          {/* Form */}
           <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Name */}
             <div>
               <label htmlFor="name" className="block text-sm font-medium mb-2">
                 Name <span className="text-red-500">*</span>
@@ -85,7 +78,6 @@ const ContactForm = () => {
               </div>
             </div>
 
-            {/* Email */}
             <div>
               <label htmlFor="email" className="block text-sm font-medium mb-2">
                 Email <span className="text-red-500">*</span>
@@ -105,7 +97,6 @@ const ContactForm = () => {
               </div>
             </div>
 
-            {/* Phone */}
             <div>
               <label htmlFor="phone" className="block text-sm font-medium mb-2">
                 Phone Number
@@ -124,7 +115,6 @@ const ContactForm = () => {
               </div>
             </div>
 
-            {/* Message */}
             <div>
               <label htmlFor="message" className="block text-sm font-medium mb-2">
                 Message <span className="text-red-500">*</span>
@@ -144,7 +134,6 @@ const ContactForm = () => {
               </div>
             </div>
 
-            {/* Status Messages */}
             {status === 'success' && (
               <div className="p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg text-green-800 dark:text-green-200 text-sm">
                 ✓ Message sent successfully! I'll get back to you soon.
@@ -153,11 +142,10 @@ const ContactForm = () => {
 
             {status === 'error' && (
               <div className="p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg text-red-800 dark:text-red-200 text-sm">
-                ✗ {errorMessage}
+                ✗ Failed to send message. Please try again.
               </div>
             )}
 
-            {/* Submit Button */}
             <button
               type="submit"
               disabled={status === 'loading'}
@@ -165,7 +153,7 @@ const ContactForm = () => {
             >
               {status === 'loading' ? (
                 <>
-                  <div className="w-5 h-5 border-2 border-white dark:border-black border-t-transparent dark:border-t-transparent rounded-full animate-spin" />
+                  <div className="w-5 h-5 border-2 border-white dark:border-black border-t-transparent rounded-full animate-spin" />
                   <span>Sending...</span>
                 </>
               ) : (
