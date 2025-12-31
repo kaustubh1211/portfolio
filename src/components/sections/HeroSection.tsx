@@ -77,7 +77,7 @@ const socialLinks = [
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="relative rounded-xl border overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900/50 dark:to-black/50 group transition-colors duration-500"
+            className="relative rounded-xl  overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900/50 dark:to-black/50 group transition-colors duration-500"
             style={{
               borderColor: isHovering 
               ? 'rgba(229, 231, 235, 0.8)' // gray-200 in light, gray-800 in dark
