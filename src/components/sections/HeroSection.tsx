@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Github, Linkedin, Mail, Twitter } from 'lucide-react';
+import { Github, Linkedin, Mail, Twitter, User } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Container from '../ui/Container';
 
@@ -47,13 +47,19 @@ const Hero: React.FC = () => {
     },
   ];
 
-  const socialLinks = [
+const socialLinks = [
     { name: 'LinkedIn', icon: Linkedin, href: 'https://www.linkedin.com/in/kaustubh-patil-8645b923a/' },
     { name: 'GitHub', icon: Github, href: 'https://github.com/kaustubh1211' },
     { name: 'Twitter', icon: Twitter, href: 'https://x.com/Kaustub1111' },
+    { 
+      name: 'Peerlist', 
+      icon: () => (
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><title>Peerlist SVG Icon</title><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="M8.87 3h6.26a6 6 0 0 1 5.963 5.337l.21 1.896c.131 1.174.131 2.36 0 3.534l-.21 1.896A6 6 0 0 1 15.13 21H8.87a6 6 0 0 1-5.963-5.337l-.21-1.896a16 16 0 0 1 0-3.534l.21-1.896A6 6 0 0 1 8.87 3"/><path d="M9 17v-4m0 0V7h4a3 3 0 0 1 3 3v0a3 3 0 0 1-3 3z"/></g></svg>
+      ), 
+      href: 'https://peerlist.io/kaustubh20' 
+    },
     { name: 'Email', icon: Mail, href: 'mailto:kasutuubh1211@gmail.com' },
   ];
-
   const highlights = [
     'Building scalable web applications with modern JavaScript frameworks',
     'Experienced in full-stack development from frontend to backend',

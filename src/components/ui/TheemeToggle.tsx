@@ -15,8 +15,16 @@ export const ThemeToggle = () => {
     return <div className="w-9 h-9" />;
   }
 
+  const playSound = () => {
+    const audio = new Audio('/switch-sound/switch.mp3'); 
+    audio.volume = 0.9; 
+     audio.playbackRate = 1.5;
+    audio.play().catch(err => console.log('Audio play failed:', err));
+  };
+
   const toggleTheme = () => {
     const newTheme = resolvedTheme === 'dark' ? 'light' : 'dark';
+    playSound();
 
     // Add View Transition if supported
     if (!document.startViewTransition) {
