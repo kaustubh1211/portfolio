@@ -1,4 +1,3 @@
-// app/blogs/[slug]/page.tsx
 import { getPostBySlug, getAllPosts } from '@/lib/mdx';
 import { notFound } from 'next/navigation';
 import Container from '@/src/components/ui/Container';
