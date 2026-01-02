@@ -135,7 +135,7 @@ const Projects: React.FC = () => {
               return (
                 <div
                   key={project.id}
-                  className="border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100/50 dark:from-gray-900/40 dark:to-black/60 hover:border-gray-300 dark:hover:border-gray-700 transition-all duration-300"
+                  className="rounded-lg overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100/50 dark:from-gray-900/40 dark:to-black/60 hover:border-gray-300 dark:hover:border-gray-700 transition-all duration-300"
                 >
                   {/* Collapsed Header */}
                   <button
