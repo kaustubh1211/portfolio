@@ -44,7 +44,7 @@ const projects: Project[] = [
     name: "Techluminix Portfolio Website",
     tagline: "Company Portfolio Built with Next.js and Tailwind CSS",
     status: "Live",
-    techStack: ["Next.js", " javascript", "Tailwind CSS",  "Framer Motion" , "SEO Optimization"],
+    techStack: ["Next.js", "JavaScript", "Tailwind CSS", "Framer Motion", "SEO Optimization"],
     highlights: [
       "Developed a fully responsive and visually engaging portfolio website for Techluminix using Next.js and Tailwind CSS.",
       "Implemented Framer Motion to create smooth, modern animations and interactive UI effects.",
@@ -56,13 +56,31 @@ const projects: Project[] = [
   },
   {
     id: 1,
+    name: "ApiLens",
+    tagline: "API Response Visualizer - Transform JSON into Interactive Views",
+    status: "Live",
+    techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Next.js API Routes"],
+    highlights: [
+      "Built a developer tool that transforms API responses into interactive visualizations (tree view, graph view, table view).",
+      "Implemented multi-method API testing (GET, POST, PUT, DELETE) with custom headers and intelligent auto-visualization engine.",
+      "Architected 100% client-side data processing for privacy and instant rendering with zero backend dependency.",
+      "Designed reusable component architecture with seamless view-switching for enhanced developer experience.",
+      "Integrated smart JSON parsing that automatically determines the best visualization method based on data structure."
+    ],
+    liveUrl: "https://apilens.kaustubhp.in/",
+    githubUrl: "https://github.com/kaustubh1211/apilens",
+  },
+  {
+    id: 2,
     name: "Jeevandhara Admin Panel",
     tagline: "E-Commerce + MLM + Recharge System",
     status: "Live",
     techStack: ["React", "Node.js", "PostgreSQL", "Express", "Tailwind CSS"],
     highlights: [
-      "Worked on Admin dashboard frontend + backend APIs, product handling, user management, MLM logic, recharge handling.",
-      "Built scalable server backend with authentication & protected routes.",
+      "Developed comprehensive admin dashboard with product management, user handling, MLM logic, and recharge system.",
+      "Built scalable backend APIs with JWT authentication, role-based access control, and protected routes.",
+      "Implemented data-heavy UI components for complex reporting, analytics, and hierarchical MLM structure visualization.",
+      "Created efficient state management and API integration for real-time updates across dashboard modules."
     ],
     liveUrl: "https://admin.jeevandharadigital.in/",
   },
