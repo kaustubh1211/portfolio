@@ -9,6 +9,7 @@ import Projects from '@/src/components/sections/Project';
 import ContactForm from '@/src/components/sections/ContactForm';
 import { TextHoverEffect } from '@/src/components/ui/Hovertext';
 import { Footer } from '@/src/components/sections/FooterInfo';
+import SmoothScroll from '@/src/components/ui/SmoothScrool';
 
 export const metadata: Metadata = {
   title: "Kaustubh — Full Stack Web Developer",
@@ -64,6 +65,8 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <main className="min-h-screen bg-white dark:bg-black text-gray-900 dark:text-white">
+      <SmoothScroll>
+
       <Navbar/>
       <Hero />
       <Projects/>
@@ -72,6 +75,7 @@ export default function Home() {
       <TextHoverEffect text='Kaustubh'/>
       <ContactForm/>
       <Footer/>
+      </SmoothScroll>
     </main>
   );
 }

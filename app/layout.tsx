@@ -5,6 +5,7 @@ import { ViewTransitions } from 'next-view-transitions';
 import { ThemeProvider } from '@/src/components/providers/themeProvider';
 import Script from "next/script";
 import LogoSchema from './logo-schema';
+import { ClickSpark } from '@/src/components/ui/ClickSpark';
 const ibmPlexMono = IBM_Plex_Mono({ 
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
@@ -70,6 +71,15 @@ export default function RootLayout({
             gtag('config', 'G-WK1PGDSLG6');
           `}
         </Script>
+        <ClickSpark
+           sparkColor={undefined}
+            sparkSize={10}
+            sparkRadius={15}
+            sparkCount={8}
+            duration={400}
+            enableColorCycle={true}  
+            enableGlow={true}        
+        />
             {children}
           </ThemeProvider>
         </body>
