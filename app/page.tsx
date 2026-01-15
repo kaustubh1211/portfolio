@@ -10,6 +10,7 @@ import ContactForm from '@/src/components/sections/ContactForm';
 import { TextHoverEffect } from '@/src/components/ui/Hovertext';
 import { Footer } from '@/src/components/sections/FooterInfo';
 import SmoothScroll from '@/src/components/ui/SmoothScrool';
+import OnekoCat from '@/src/components/ui/CatEffect';
 
 export const metadata: Metadata = {
   title: "Kaustubh — Full Stack Web Developer",
@@ -66,7 +67,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-white dark:bg-black text-gray-900 dark:text-white">
       <SmoothScroll>
-
+      <OnekoCat/>
       <Navbar/>
       <Hero />
       <Projects/>
