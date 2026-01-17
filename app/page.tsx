@@ -3,7 +3,6 @@ import Hero from '@/src/components/sections/HeroSection';
 import Experience from '@/src/components/sections/Experince';
 import type { Metadata } from 'next';
 import Navbar from '@/src/components/layout/Navbar';
-import GitHubActivity from '@/src/components/sections/GithubShowCase';
 import { ProjectorIcon } from 'lucide-react';
 import Projects from '@/src/components/sections/Project';
 import ContactForm from '@/src/components/sections/ContactForm';
@@ -11,6 +10,7 @@ import { TextHoverEffect } from '@/src/components/ui/Hovertext';
 import { Footer } from '@/src/components/sections/FooterInfo';
 import SmoothScroll from '@/src/components/ui/SmoothScrool';
 import OnekoCat from '@/src/components/ui/CatEffect';
+import GitHubActivity from '@/src/components/sections/GithubShowCaseServer';
 
 export const metadata: Metadata = {
   title: "Kaustubh — Full Stack Web Developer",

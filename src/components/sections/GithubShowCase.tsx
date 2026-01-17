@@ -1,6 +1,7 @@
+
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import Container from '../ui/Container';
 
@@ -16,30 +17,14 @@ interface GitHubData {
   totalContributions: number;
 }
 
-const GitHubActivity = () => {
-  const GITHUB_USERNAME = 'kaustubh1211';
-  
-  const [data, setData] = useState<GitHubData | null>(null);
-  const [loading, setLoading] = useState(true);
+interface GitHubActivityClientProps {
+  data: GitHubData | null;
+  username: string;
+}
+
+const GitHubActivityClient = ({ data, username }: GitHubActivityClientProps) => {
   const [hoveredDay, setHoveredDay] = useState<ContributionDay | null>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const fetchContributions = async () => {
-      try {
-        const response = await fetch(`https://github-contributions-api.deno.dev/${GITHUB_USERNAME}.json`);
-        const jsonData = await response.json();
-        
-        setData(jsonData);
-        setLoading(false);
-      } catch (err) {
-        console.error('Error fetching contributions:', err);
-        setLoading(false);
-      }
-    };
-
-    fetchContributions();
-  }, []);
 
   const handleMouseMove = (e: React.MouseEvent, day: ContributionDay) => {
     setHoveredDay(day);
@@ -97,25 +82,20 @@ const GitHubActivity = () => {
               GitHub Activity
             </h2>
             
-            {loading ? (
-              <div className="flex items-center gap-2">
-                <div className="w-4 h-4 border-2 border-gray-300 dark:border-gray-600 border-t-gray-900 dark:border-t-white rounded-full animate-spin"></div>
-                <span className="text-gray-600 dark:text-gray-400 text-sm">Loading contributions...</span>
-              </div>
-            ) : data ? (
+            {data ? (
               <p className="text-gray-600 dark:text-gray-400">
                 Total: <span className="text-gray-900 dark:text-white font-semibold">{data.totalContributions.toLocaleString()}</span> contributions in the last year
               </p>
-            ) : null}
+            ) : (
+              <p className="text-gray-600 dark:text-gray-400">
+                Unable to load contribution data
+              </p>
+            )}
           </div>
 
           {/* GitHub Contribution Graph */}
           <div className="border border-gray-200 dark:border-gray-800 rounded-xl p-6 md:overflow-hidden overflow-x-auto relative bg-gray-50 dark:bg-gray-900/50">
-            {loading ? (
-              <div className="flex items-center justify-center h-32">
-                <div className="w-8 h-8 border-4 border-gray-300 dark:border-gray-600 border-t-gray-900 dark:border-t-white rounded-full animate-spin"></div>
-              </div>
-            ) : data ? (
+            {data ? (
               <div className="min-w-[700px]">
                 {/* Month Labels */}
                 <div className="flex gap-1 mb-2 text-xs text-gray-500 dark:text-gray-500 pl-8">
@@ -162,7 +142,11 @@ const GitHubActivity = () => {
                   </div>
                 </div>
               </div>
-            ) : null}
+            ) : (
+              <div className="flex items-center justify-center h-32 text-gray-500">
+                Failed to load GitHub contributions
+              </div>
+            )}
             
             {/* Contribution Legend */}
             <div className="flex items-center justify-end gap-2 mt-6 text-xs text-gray-500 dark:text-gray-500">
@@ -198,7 +182,7 @@ const GitHubActivity = () => {
 
           {/* View GitHub Button */}
           <motion.a
-            href={`https://github.com/${GITHUB_USERNAME}`}
+            href={`https://github.com/${username}`}
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.02 }}
@@ -224,4 +208,4 @@ const GitHubActivity = () => {
   );
 };
 
-export default GitHubActivity;
+export default GitHubActivityClient;
