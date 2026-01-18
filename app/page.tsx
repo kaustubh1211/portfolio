@@ -11,6 +11,7 @@ import { Footer } from '@/src/components/sections/FooterInfo';
 import SmoothScroll from '@/src/components/ui/SmoothScrool';
 import OnekoCat from '@/src/components/ui/CatEffect';
 import GitHubActivity from '@/src/components/sections/GithubShowCaseServer';
+import QuoteComponent from '@/src/components/sections/QuoteComponent';
 
 export const metadata: Metadata = {
   title: "Kaustubh — Full Stack Web Developer",
@@ -73,6 +74,7 @@ export default function Home() {
       <Projects/>
       <GitHubActivity/>
       <Experience />
+      <QuoteComponent random={true}/>
       <TextHoverEffect text='Kaustubh'/>
       <ContactForm/>
       <Footer/>
