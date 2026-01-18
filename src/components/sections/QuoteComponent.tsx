@@ -1,6 +1,4 @@
-'use client';
-
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Container from '../ui/Container';
 
 interface Quote {
@@ -57,14 +55,15 @@ interface QuoteComponentProps {
 }
 
 const QuoteComponent: React.FC<QuoteComponentProps> = ({ random = false, className = '' }) => {
-  const [currentQuote, setCurrentQuote] = useState<Quote>(bhagavadGitaQuotes[0]);
-
-  useEffect(() => {
+  const getQuote = () => {
     if (random) {
       const randomIndex = Math.floor(Math.random() * bhagavadGitaQuotes.length);
-      setCurrentQuote(bhagavadGitaQuotes[randomIndex]);
+      return bhagavadGitaQuotes[randomIndex];
     }
-  }, [random]);
+    return bhagavadGitaQuotes[0];
+  };
+
+  const currentQuote = getQuote();
 
   return (
     <Container>
