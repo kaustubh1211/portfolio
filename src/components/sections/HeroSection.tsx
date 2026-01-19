@@ -45,6 +45,12 @@ const Hero: React.FC = () => {
       logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg',
       url: 'https://www.postgresql.org/'
     },
+    {
+      name: 'Tailwind CSS',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg',
+      url: 'https://tailwindcss.com/'
+    },
+  
   ];
 
 const socialLinks = [
