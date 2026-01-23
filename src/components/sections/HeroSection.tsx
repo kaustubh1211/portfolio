@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { Github, Linkedin, Mail, Twitter, User } from 'lucide-react';
 import { motion, useAnimationControls } from 'framer-motion';
 import Container from '../ui/Container';
+import AnimatedText from '../ui/AnimatedText';
 
 const Hero: React.FC = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -239,9 +240,15 @@ const Hero: React.FC = () => {
                   <h1 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight mb-2 text-gray-900 dark:text-white">
                     Kaustubh Patil
                   </h1>
-                  <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 font-medium mb-3">
-                    Full Stack Web Developer
-                  </p>
+                  <AnimatedText
+                    phrases={[
+                      'Full Stack Developer',
+                      'Frontend Specialist',
+                      'Backend Architect',
+                      'Creative Coder',
+                    ]}
+                    className="text-sm sm:text-base text-gray-600 dark:text-gray-400 font-medium mb-3"
+                  />
                   <p className="text-sm text-gray-500 dark:text-gray-500">
                     Building scalable web solutions with modern technologies
                   </p>
