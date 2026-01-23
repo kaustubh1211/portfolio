@@ -1,18 +1,47 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Github, Linkedin, Mail, Twitter, User } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion, useAnimationControls } from 'framer-motion';
 import Container from '../ui/Container';
 
 const Hero: React.FC = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
+  const [shinePosition, setShinePosition] = useState(-300);
+  const [cardWidth, setCardWidth] = useState(1000);
+
+  // Auto-shine effect
+  useEffect(() => {
+    const interval = setInterval(() => {
+      // Reset to left side
+      setShinePosition(-300);
+
+      // Animate across
+      const duration = 1900; // 1.5 seconds to cross
+      const steps = 120;
+      const stepDuration = duration / steps;
+      const stepSize = (cardWidth + 600) / steps;
+
+      let step = 0;
+      const animateShine = setInterval(() => {
+        step++;
+        setShinePosition(prev => prev + stepSize);
+        if (step >= steps) {
+          clearInterval(animateShine);
+        }
+      }, stepDuration);
+
+    }, 3000); // Repeat every 4 seconds
+
+    return () => clearInterval(interval);
+  }, [cardWidth]);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
+    setCardWidth(rect.width);
     setMousePosition({
       x: e.clientX - rect.left,
       y: e.clientY - rect.top,
@@ -20,28 +49,28 @@ const Hero: React.FC = () => {
   };
 
   const techStack = [
-    { 
-      name: 'TypeScript', 
+    {
+      name: 'TypeScript',
       logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg',
       url: 'https://www.typescriptlang.org/'
     },
-    { 
-      name: 'React', 
+    {
+      name: 'React',
       logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
       url: 'https://react.dev/'
     },
-    { 
-      name: 'Next.js', 
+    {
+      name: 'Next.js',
       logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg',
       url: 'https://nextjs.org/'
     },
-    { 
-      name: 'Node.js', 
+    {
+      name: 'Node.js',
       logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg',
       url: 'https://nodejs.org/'
     },
-    { 
-      name: 'PostgreSQL', 
+    {
+      name: 'PostgreSQL',
       logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg',
       url: 'https://www.postgresql.org/'
     },
@@ -50,22 +79,22 @@ const Hero: React.FC = () => {
       logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg',
       url: 'https://tailwindcss.com/'
     },
-  
   ];
 
-const socialLinks = [
+  const socialLinks = [
     { name: 'LinkedIn', icon: Linkedin, href: 'https://www.linkedin.com/in/kaustubh-patil-8645b923a/' },
     { name: 'GitHub', icon: Github, href: 'https://github.com/kaustubh1211' },
     { name: 'Twitter', icon: Twitter, href: 'https://x.com/Kaustub1111' },
-    { 
-      name: 'Peerlist', 
+    {
+      name: 'Peerlist',
       icon: () => (
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><title>Peerlist SVG Icon</title><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="M8.87 3h6.26a6 6 0 0 1 5.963 5.337l.21 1.896c.131 1.174.131 2.36 0 3.534l-.21 1.896A6 6 0 0 1 15.13 21H8.87a6 6 0 0 1-5.963-5.337l-.21-1.896a16 16 0 0 1 0-3.534l.21-1.896A6 6 0 0 1 8.87 3"/><path d="M9 17v-4m0 0V7h4a3 3 0 0 1 3 3v0a3 3 0 0 1-3 3z"/></g></svg>
-      ), 
-      href: 'https://peerlist.io/kaustubh20' 
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><title>Peerlist SVG Icon</title><g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5"><path d="M8.87 3h6.26a6 6 0 0 1 5.963 5.337l.21 1.896c.131 1.174.131 2.36 0 3.534l-.21 1.896A6 6 0 0 1 15.13 21H8.87a6 6 0 0 1-5.963-5.337l-.21-1.896a16 16 0 0 1 0-3.534l.21-1.896A6 6 0 0 1 8.87 3" /><path d="M9 17v-4m0 0V7h4a3 3 0 0 1 3 3v0a3 3 0 0 1-3 3z" /></g></svg>
+      ),
+      href: 'https://peerlist.io/kaustubh20'
     },
     { name: 'Email', icon: Mail, href: 'mailto:kasutuubh1211@gmail.com' },
   ];
+
   const highlights = [
     'Building scalable web applications with modern JavaScript frameworks',
     'Experienced in full-stack development from frontend to backend',
@@ -79,22 +108,22 @@ const socialLinks = [
       <Container className="py-20">
         <div className="space-y-12">
           {/* Top: Profile Card with Grid Background */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="relative rounded-xl  overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900/50 dark:to-black/50 group transition-colors duration-500"
+            className="relative rounded-xl overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900/50 dark:to-black/50 group transition-colors duration-500"
             style={{
-              borderColor: isHovering 
-              ? 'rgba(229, 231, 235, 0.8)' // gray-200 in light, gray-800 in dark
-              : 'rgba(156, 163, 175, 0.5)', // gray-400 in light, gray-600 in dark
+              borderColor: isHovering
+                ? 'rgba(229, 231, 235, 0.8)'
+                : 'rgba(156, 163, 175, 0.5)',
             }}
             onMouseMove={handleMouseMove}
             onMouseEnter={() => setIsHovering(true)}
             onMouseLeave={() => setIsHovering(false)}
           >
             {/* Static Grid Pattern - Low Contrast */}
-            <div 
+            <div
               className="absolute inset-0 opacity-[0.15] dark:opacity-[0.08]"
               style={{
                 backgroundImage: `
@@ -102,9 +131,39 @@ const socialLinks = [
                   linear-gradient(to bottom, currentColor 1px, transparent 1px)
                 `,
                 backgroundSize: '24px 24px',
-                color: 'rgb(156 163 175)', // gray-400
+                color: 'rgb(156 163 175)',
               }}
             />
+
+            {/* Auto Shine Effect - Sweeps left to right */}
+            {!isHovering && (
+              <div
+                className="absolute inset-0 pointer-events-none z-0"
+                style={{
+                  background: `radial-gradient(ellipse 150px 300px at ${shinePosition}px 50%, 
+                    rgba(156, 163, 175, 0.25) 0%, 
+                    transparent 70%)`,
+                }}
+              >
+                {/* High contrast grid visible only in shine area */}
+                <div
+                  className="absolute inset-0"
+                  style={{
+                    backgroundImage: `
+                      linear-gradient(to right, rgba(107, 114, 128, 0.5) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(107, 114, 128, 0.5) 1px, transparent 1px)
+                    `,
+                    backgroundSize: '24px 24px',
+                    maskImage: `radial-gradient(ellipse 150px 300px at ${shinePosition}px 50%, 
+                      black 0%, 
+                      transparent 70%)`,
+                    WebkitMaskImage: `radial-gradient(ellipse 150px 300px at ${shinePosition}px 50%, 
+                      black 0%, 
+                      transparent 70%)`,
+                  }}
+                />
+              </div>
+            )}
 
             {/* Torch/Spotlight Effect - Highlights Grid on Hover */}
             {isHovering && (
@@ -121,7 +180,7 @@ const socialLinks = [
                 }}
               >
                 {/* High contrast grid visible only in torch area */}
-                <div 
+                <div
                   className="absolute inset-0"
                   style={{
                     backgroundImage: `
@@ -140,7 +199,7 @@ const socialLinks = [
               </motion.div>
             )}
 
-            {/* Subtle color accent */}
+            {/* Subtle color accent on hover */}
             {isHovering && (
               <motion.div
                 className="absolute inset-0 opacity-30 z-0"
@@ -194,6 +253,7 @@ const socialLinks = [
             <div className="h-[2px] bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent"></div>
           </motion.div>
 
+          {/* Rest of the component remains the same... */}
           {/* About Section */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -211,17 +271,17 @@ const socialLinks = [
               {highlights.map((highlight, index) => (
                 <motion.li
                   key={index}
-                  initial={{ 
-                    opacity: 0, 
+                  initial={{
+                    opacity: 0,
                     x: -20,
                     filter: 'blur(10px)'
                   }}
-                  animate={{ 
-                    opacity: 1, 
+                  animate={{
+                    opacity: 1,
                     x: 0,
                     filter: 'blur(0px)'
                   }}
-                  transition={{ 
+                  transition={{
                     duration: 0.6,
                     delay: 0.3 + index * 0.15,
                     ease: [0.25, 0.4, 0.25, 1]
@@ -251,25 +311,25 @@ const socialLinks = [
                   href={tech.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  initial={{ 
-                    opacity: 0, 
+                  initial={{
+                    opacity: 0,
                     scale: 0.8,
                     filter: 'blur(8px)'
                   }}
-                  animate={{ 
-                    opacity: 1, 
+                  animate={{
+                    opacity: 1,
                     scale: 1,
                     filter: 'blur(0px)'
                   }}
-                  transition={{ 
-                    duration: 0.5, 
+                  transition={{
+                    duration: 0.5,
                     delay: 1.3 + index * 0.1,
                     ease: [0.25, 0.4, 0.25, 1]
                   }}
                   className="flex items-center gap-2 px-4 py-2.5 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-800 rounded-lg hover:border-gray-400 dark:hover:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all group"
                 >
-                  <Image 
-                    src={tech.logo} 
+                  <Image
+                    src={tech.logo}
                     alt={tech.name}
                     width={20}
                     height={20}
@@ -282,7 +342,7 @@ const socialLinks = [
           </motion.div>
 
           {/* CTA Buttons */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 1.8 }}
@@ -304,7 +364,7 @@ const socialLinks = [
           </motion.div>
 
           {/* Social Links */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 2.0 }}
@@ -315,18 +375,18 @@ const socialLinks = [
               return (
                 <motion.div
                   key={social.name}
-                  initial={{ 
-                    opacity: 0, 
+                  initial={{
+                    opacity: 0,
                     scale: 0.8,
                     filter: 'blur(6px)'
                   }}
-                  animate={{ 
-                    opacity: 1, 
+                  animate={{
+                    opacity: 1,
                     scale: 1,
                     filter: 'blur(0px)'
                   }}
-                  transition={{ 
-                    duration: 0.4, 
+                  transition={{
+                    duration: 0.4,
                     delay: 2.1 + index * 0.1,
                     ease: [0.25, 0.4, 0.25, 1]
                   }}
