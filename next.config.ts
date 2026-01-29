@@ -1,10 +1,10 @@
 // next.config.js
 module.exports = {
   experimental: {
-    turbo: true,  // Enable Turbopack if you want to use it
+    turbo: true,
   },
-    pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
-    images: {
-    domains: ['images.unsplash.com'], // Add this line
+  pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
+  images: {
+    domains: ['images.unsplash.com', 'api.microlink.io', 'cdn.jsdelivr.net'],
   },
 };

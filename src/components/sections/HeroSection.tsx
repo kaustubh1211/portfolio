@@ -3,8 +3,9 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { LinkPreview } from '../ui/LinkPreview';
 import { Github, Linkedin, Mail, Twitter, User } from 'lucide-react';
-import { motion, useAnimationControls } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Container from '../ui/Container';
 import AnimatedText from '../ui/AnimatedText';
 
@@ -83,9 +84,25 @@ const Hero: React.FC = () => {
   ];
 
   const socialLinks = [
-    { name: 'LinkedIn', icon: Linkedin, href: 'https://www.linkedin.com/in/kaustubh-patil-8645b923a/' },
-    { name: 'GitHub', icon: Github, href: 'https://github.com/kaustubh1211' },
-    { name: 'Twitter', icon: Twitter, href: 'https://x.com/Kaustub1111' },
+    {
+      name: 'LinkedIn',
+      icon: Linkedin,
+      href: 'https://www.linkedin.com/in/kaustubh-patil-8645b923a/',
+      isStatic: true,
+      imageSrc: '/images/social/linkedin-preview.png'
+    },
+    {
+      name: 'GitHub',
+      icon: Github,
+      href: 'https://github.com/kaustubh1211'
+    },
+    {
+      name: 'Twitter',
+      icon: Twitter,
+      href: 'https://x.com/Kaustub1111',
+      isStatic: true,
+      imageSrc: '/images/social/twitter-preview.png'
+    },
     {
       name: 'Peerlist',
       icon: () => (
@@ -93,7 +110,13 @@ const Hero: React.FC = () => {
       ),
       href: 'https://peerlist.io/kaustubh20'
     },
-    { name: 'Email', icon: Mail, href: 'mailto:kasutuubh1211@gmail.com' },
+    {
+      name: 'Email',
+      icon: Mail,
+      href: 'mailto:kasutuubh1211@gmail.com',
+      isStatic: true,
+      imageSrc: '/images/social/email-preview.svg'
+    },
   ];
 
   const highlights = [
@@ -398,15 +421,15 @@ const Hero: React.FC = () => {
                     ease: [0.25, 0.4, 0.25, 1]
                   }}
                 >
-                  <Link
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <LinkPreview
+                    url={social.href}
                     className="flex items-center justify-center w-10 h-10 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-900 rounded-lg transition-all"
                     aria-label={social.name}
+                    isStatic={social.isStatic}
+                    imageSrc={social.imageSrc}
                   >
                     <Icon className="w-5 h-5" />
-                  </Link>
+                  </LinkPreview>
                 </motion.div>
               );
             })}
