@@ -8,7 +8,6 @@ import { motion } from 'framer-motion';
 import Container from '../ui/Container';
 import AnimatedText from '../ui/AnimatedText';
 import { socialLinks, highlights, techStack } from '@/src/data/skills';
-import { Github, Linkedin, Mail, Twitter, User } from 'lucide-react';
 
 
 const Hero: React.FC = () => {
