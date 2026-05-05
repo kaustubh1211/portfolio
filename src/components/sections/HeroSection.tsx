@@ -4,10 +4,12 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { LinkPreview } from '../ui/LinkPreview';
-import { Github, Linkedin, Mail, Twitter, User } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Container from '../ui/Container';
 import AnimatedText from '../ui/AnimatedText';
+import { socialLinks, highlights, techStack } from '@/src/data/skills';
+import { Github, Linkedin, Mail, Twitter, User } from 'lucide-react';
+
 
 const Hero: React.FC = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -50,82 +52,7 @@ const Hero: React.FC = () => {
     });
   };
 
-  const techStack = [
-    {
-      name: 'TypeScript',
-      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg',
-      url: 'https://www.typescriptlang.org/'
-    },
-    {
-      name: 'React',
-      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
-      url: 'https://react.dev/'
-    },
-    {
-      name: 'Next.js',
-      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg',
-      url: 'https://nextjs.org/'
-    },
-    {
-      name: 'Node.js',
-      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg',
-      url: 'https://nodejs.org/'
-    },
-    {
-      name: 'PostgreSQL',
-      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg',
-      url: 'https://www.postgresql.org/'
-    },
-    {
-      name: 'Tailwind CSS',
-      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg',
-      url: 'https://tailwindcss.com/'
-    },
-  ];
 
-  const socialLinks = [
-    {
-      name: 'LinkedIn',
-      icon: Linkedin,
-      href: 'https://www.linkedin.com/in/kaustubh-patil-8645b923a/',
-      isStatic: true,
-      imageSrc: '/images/social/linkedin-preview.png'
-    },
-    {
-      name: 'GitHub',
-      icon: Github,
-      href: 'https://github.com/kaustubh1211'
-    },
-    {
-      name: 'Twitter',
-      icon: Twitter,
-      href: 'https://x.com/Kaustub1111',
-      isStatic: true,
-      imageSrc: '/images/social/twitter-preview.png'
-    },
-    {
-      name: 'Peerlist',
-      icon: () => (
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><title>Peerlist SVG Icon</title><g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5"><path d="M8.87 3h6.26a6 6 0 0 1 5.963 5.337l.21 1.896c.131 1.174.131 2.36 0 3.534l-.21 1.896A6 6 0 0 1 15.13 21H8.87a6 6 0 0 1-5.963-5.337l-.21-1.896a16 16 0 0 1 0-3.534l.21-1.896A6 6 0 0 1 8.87 3" /><path d="M9 17v-4m0 0V7h4a3 3 0 0 1 3 3v0a3 3 0 0 1-3 3z" /></g></svg>
-      ),
-      href: 'https://peerlist.io/kaustubh20'
-    },
-    {
-      name: 'Email',
-      icon: Mail,
-      href: 'mailto:kasutuubh1211@gmail.com',
-      isStatic: true,
-      imageSrc: '/images/social/email-preview.svg'
-    },
-  ];
-
-  const highlights = [
-    'Building scalable web applications with modern JavaScript frameworks',
-    'Experienced in full-stack development from frontend to backend',
-    'Strong focus on clean code, performance optimization & best practices',
-    'Specialized in creating responsive UIs and RESTful APIs',
-    'Proficient in database design, authentication systems & SEO optimization'
-  ];
 
   return (
     <section className="min-h-screen bg-white dark:bg-black text-gray-900 dark:text-white flex items-center pt-5 transition-colors">
@@ -421,15 +348,19 @@ const Hero: React.FC = () => {
                     ease: [0.25, 0.4, 0.25, 1]
                   }}
                 >
-                  <LinkPreview
-                    url={social.href}
-                    className="flex items-center justify-center w-10 h-10 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-900 rounded-lg transition-all"
-                    aria-label={social.name}
-                    isStatic={social.isStatic}
-                    imageSrc={social.imageSrc}
-                  >
-                    <Icon className="w-5 h-5" />
-                  </LinkPreview>
+            <LinkPreview
+  url={social.href}
+  className="flex items-center justify-center w-10 h-10 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-900 rounded-lg transition-all"
+  aria-label={social.name}
+  isStatic={social.isStatic}
+  imageSrc={social.imageSrc}
+>
+  {social.iconImg ? (
+    <img src={social.iconImg} alt={social.name} className="w-5 h-5" />
+  ) : (
+    Icon && <Icon className="w-5 h-5" />
+  )}
+</LinkPreview>
                 </motion.div>
               );
             })}
